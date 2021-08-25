@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th=”http://www.thymeleaf.org”>
 <head>
 <meta charset="ISO-8859-1">
 <title>Inicio</title>
 </head>
 <body>
-	<h2>Bienvenido a mi aplicaci�n de empleos</h2>
+	<h1 th:text="${mensaje}">Este mensaje sera sustituido al momento de cargar la ventana</h1>
+	<h2>El día de hoy es: [[${fecha}]]</h2>
 </body>
 </html>
