@@ -5,7 +5,15 @@
 <title>Inicio</title>
 </head>
 <body>
+	<!-- 
 	<h1 th:text="${mensaje}">Este mensaje sera sustituido al momento de cargar la ventana</h1>
 	<h2>El día de hoy es: [[${fecha}]]</h2>
+	 -->
+	 <h1>Bienvenido</h1>
+	 <h2>Oferta de trabajo</h2>
+	 <h3 th:text="'Titulo: '+ ${nombre}"></h3>
+	 <h3 th:text="'Fecha de Publicación: '+ ${fecha}"></h3>
+	 <h3 th:text="'Salario Ofrecido: '+ ${salario}"></h3>
+	 <h3 th:text="'Vigente: '+ ${vigente}"></h3>
 </body>
 </html>
