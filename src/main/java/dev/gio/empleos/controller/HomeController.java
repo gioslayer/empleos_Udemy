@@ -1,6 +1,8 @@
 package dev.gio.empleos.controller;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,5 +28,18 @@ public class HomeController {
 		model.addAttribute("vigente", vigente);
 		
 		return "home";
+	}
+	
+	@GetMapping("/listado")
+	public String mostrarListado(Model model) {
+		List<String> lista = new LinkedList<String>();
+		lista.add("Ingeniero en Sistemas");
+		lista.add("Auxiliar de Contabilidad");
+		lista.add("Asistente de Ventas");
+		lista.add("Arquitecto de software");
+		
+		model.addAttribute("empleos", lista);
+		
+		return "listado";
 	}
 } 
