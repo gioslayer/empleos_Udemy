@@ -85,24 +85,28 @@ public class HomeController {
 			vac1.setDescripcion("Se solicita un Ing. Civil para el diseño de un puente peatonal.");
 			vac1.setFecha(sdf.parse("28-08-2021"));
 			vac1.setSalario(35000.0);
+			vac1.setDestacado(0);
 			
 			vac2.setId(2);
 			vac2.setNombre("Contador Público");
 			vac2.setDescripcion("Estamos en busqueda de un Contador Publico para llevar una nómina de importante empresa de software");
 			vac2.setFecha(sdf.parse("22-03-2021"));
 			vac2.setSalario(15000.0);
+			vac2.setDestacado(1);
 			
 			vac3.setId(3);
 			vac3.setNombre("Ingeniero Eléctrico");
 			vac3.setDescripcion("Solicitamos un Ingeniero Eléctrico para el mantenimiento de instalación eléctrica de un edificio de 20 pisos");
 			vac3.setFecha(sdf.parse("15-05-2021"));
 			vac3.setSalario(23000.0);
+			vac3.setDestacado(0);
 			
 			vac4.setId(4);
 			vac4.setNombre("Ingeniero Químico");
 			vac4.setDescripcion("Se solicita un Ingeniero Químico para la fabricación de estupefacientes");
 			vac4.setFecha(sdf.parse("17-04-2021"));
 			vac4.setSalario(85000.0);
+			vac4.setDestacado(1);
 			
 			lista.add(vac1);
 			lista.add(vac2);
