@@ -86,6 +86,7 @@ public class HomeController {
 			vac1.setFecha(sdf.parse("28-08-2021"));
 			vac1.setSalario(35000.0);
 			vac1.setDestacado(0);
+			vac1.setImagen("w.png");
 			
 			vac2.setId(2);
 			vac2.setNombre("Contador Público");
@@ -93,6 +94,7 @@ public class HomeController {
 			vac2.setFecha(sdf.parse("22-03-2021"));
 			vac2.setSalario(15000.0);
 			vac2.setDestacado(1);
+			vac2.setImagen("circle.jpg");
 			
 			vac3.setId(3);
 			vac3.setNombre("Ingeniero Eléctrico");
@@ -100,6 +102,7 @@ public class HomeController {
 			vac3.setFecha(sdf.parse("15-05-2021"));
 			vac3.setSalario(23000.0);
 			vac3.setDestacado(0);
+			vac3.setImagen("global_marketing.png");
 			
 			vac4.setId(4);
 			vac4.setNombre("Ingeniero Químico");
@@ -107,6 +110,7 @@ public class HomeController {
 			vac4.setFecha(sdf.parse("17-04-2021"));
 			vac4.setSalario(85000.0);
 			vac4.setDestacado(1);
+			//vac4.setImagen("samsung.jpg");
 			
 			lista.add(vac1);
 			lista.add(vac2);
