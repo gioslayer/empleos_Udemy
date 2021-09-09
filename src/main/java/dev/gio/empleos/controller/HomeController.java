@@ -6,14 +6,19 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import dev.gio.empleos.model.Vacante;
+import dev.gio.empleos.service.IVacantesService;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private IVacantesService serviceVacantes;
 	
 	@GetMapping("/")
 	public String mostrarHome(Model model) {
@@ -60,7 +65,7 @@ public class HomeController {
 	
 	@GetMapping("/tabla")
 	public String mostrarTabla(Model model) {
-		List<Vacante> lista = getVacantes();
+		List<Vacante> lista = serviceVacantes.buscarTodas();
 		model.addAttribute("vacantes", lista);
 		return "tabla";
 	}
@@ -69,6 +74,7 @@ public class HomeController {
 	 * Método que regresa una lista de objetos tipo Vacante
 	 * @return
 	 */
+	/*
 	private List<Vacante> getVacantes(){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		List<Vacante> lista = new LinkedList<Vacante>();
@@ -123,4 +129,5 @@ public class HomeController {
 		
 		return lista;
 	}
+	*/
 } 
