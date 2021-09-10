@@ -7,4 +7,5 @@ import dev.gio.empleos.model.Vacante;
 public interface IVacantesService {
 
 	List<Vacante> buscarTodas();
+	Vacante buscarPorId(Integer idVacante);
 }
