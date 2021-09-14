@@ -25,7 +25,6 @@ public class VacantesController {
 		System.out.println("IdVacante: " + vacante);
 		model.addAttribute("vacante", vacante);
 		
-		
 		return "detalle";
 	}
 	
