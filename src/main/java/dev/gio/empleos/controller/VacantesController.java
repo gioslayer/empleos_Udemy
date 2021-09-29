@@ -2,11 +2,14 @@ package dev.gio.empleos.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -43,12 +46,18 @@ public class VacantesController {
 	}
 	
 	@GetMapping("/create")
-	public String crear() {
+	public String crear(Vacante vacante) {
 		return "vacantes/formVacante";
 	}
 	
 	@PostMapping("/save")
-	public String guardar(Vacante vacante) {
+	public String guardar(Vacante vacante, BindingResult result) {
+		if(result.hasErrors()) {
+			for(ObjectError error : result.getAllErrors()) {
+				System.out.println("Ocurrio el error: " + error.getDefaultMessage());
+			}
+			return "vacantes/formVacante";
+		}
 		serviceVacantes.guardar(vacante);
 		System.out.println("Vacante: " + vacante);
 		return "vacantes/listVacantes";
@@ -78,4 +87,15 @@ public class VacantesController {
 		return "vacantes/listVacantes";
 	}
 	*/
+	
+	@GetMapping("/index")
+	public String mostrarIndex(Model model) {
+		// 1.- Obtener todas las vacantes (recuperar con la clase de servicio)
+		// 2.- Agregar al modelo el listado de vacantes
+		// 3.- Renderizar las vacantes  (integrar el archivo template-empleos/listVacantes.html
+		// 4.- Agregar al menu una opcion llamada "Vacantes" configurando la URL "vacantes/index"
+		List<Vacante> listaVacantes = serviceVacantes.buscarTodas();
+		model.addAttribute("listaVacantes", listaVacantes);
+		return "vacantes/listVacantes";
+	}
 }

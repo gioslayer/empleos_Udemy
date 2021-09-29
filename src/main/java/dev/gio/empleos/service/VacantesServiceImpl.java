@@ -32,6 +32,7 @@ public class VacantesServiceImpl implements IVacantesService{
 			vac1.setSalario(40000.0);
 			vac1.setDestacado(0);
 			vac1.setImagen("w.png");
+			vac1.setEstatus("Aprobada");
 			
 			vac2.setId(2);
 			vac2.setNombre("Contador Público");
@@ -40,6 +41,7 @@ public class VacantesServiceImpl implements IVacantesService{
 			vac2.setSalario(15000.0);
 			vac2.setDestacado(1);
 			vac2.setImagen("circle.jpg");
+			vac2.setEstatus("Eliminada");
 			
 			vac3.setId(3);
 			vac3.setNombre("Ingeniero Eléctrico");
@@ -48,6 +50,7 @@ public class VacantesServiceImpl implements IVacantesService{
 			vac3.setSalario(23000.0);
 			vac3.setDestacado(0);
 			vac3.setImagen("global_marketing.png");
+			vac3.setEstatus("Creada");
 			
 			vac4.setId(4);
 			vac4.setNombre("Ingeniero Químico");
@@ -55,6 +58,7 @@ public class VacantesServiceImpl implements IVacantesService{
 			vac4.setFecha(sdf.parse("17-04-2021"));
 			vac4.setSalario(85000.0);
 			vac4.setDestacado(1);
+			vac4.setEstatus("Creada");
 			//vac4.setImagen("samsung.jpg");
 			
 			lista.add(vac1);
