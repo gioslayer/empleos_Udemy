@@ -93,6 +93,7 @@ public class VacantesController {
 	
 	@GetMapping("/index")
 	public String mostrarIndex(Model model) {
+		//Ejercicio 1
 		// 1.- Obtener todas las vacantes (recuperar con la clase de servicio)
 		// 2.- Agregar al modelo el listado de vacantes
 		// 3.- Renderizar las vacantes  (integrar el archivo template-empleos/listVacantes.html
