@@ -25,9 +25,9 @@
       <div class="container"> 
 
         <div class="card">
-          <h4 class="card-header"><strong>Datos de la oferta de trabajo</strong></h4>              
+          <h4 class="card-header"><strong>Datos de la oferta de trabajo</strong></h4>
           <div class="card-body">
-            <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}">
+            <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}" enctype="multipart/form-data">
               <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role='alert'>
               		Favor de corregir los siguientes errores:
               		<ul>
