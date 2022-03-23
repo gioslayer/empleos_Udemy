@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import dev.gio.empleos.model.Categoria;
@@ -11,6 +12,7 @@ import dev.gio.empleos.repository.CategoriasRepository;
 import dev.gio.empleos.service.ICategoriasService;
 
 @Service
+@Primary
 public class CategoriasServiceJpa implements ICategoriasService {
 
 	@Autowired
@@ -29,6 +31,9 @@ public class CategoriasServiceJpa implements ICategoriasService {
 	@Override
 	public Categoria buscarPorId(Integer idCategoria) {
 		Optional <Categoria> optional = categoriasRepo.findById(idCategoria);
+		if(optional.isPresent()) {
+			return optional.get();
+		}
 		return null;
 	}
 
