@@ -93,6 +93,12 @@ public class VacantesServiceImpl implements IVacantesService{
 		lista.add(vacante);
 	}
 
+	@Override
+	public List<Vacante> buscarDestacadas() {
+//		Este metodo ya no se usa ya que usamos el de JPA
+		return null;
+	}
+
 	
 	
 }
