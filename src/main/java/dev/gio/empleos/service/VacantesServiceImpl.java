@@ -99,6 +99,11 @@ public class VacantesServiceImpl implements IVacantesService{
 		return null;
 	}
 
+	@Override
+	public void eliminar(Integer idVacante) {
+		// No usado por no ser de Jpa
+	}
+
 	
 	
 }

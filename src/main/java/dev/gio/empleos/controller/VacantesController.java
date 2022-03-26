@@ -51,11 +51,13 @@ public class VacantesController {
 		return "detalle";
 	}
 	
-	@GetMapping("/delete")
-	public String eliminar(@RequestParam("id") int idVacante, Model model) {
+	@GetMapping("/delete/{id}")
+	public String eliminar(@PathVariable("id") int idVacante, Model model, RedirectAttributes attributes) {
 		System.out.println("Borrando la vacante con el id: " + idVacante);
-		model.addAttribute("idVacante", idVacante);
-		return "mensaje";
+		serviceVacantes.eliminar(idVacante);
+		attributes.addFlashAttribute("msg", "La vacante fue eliminada");
+//		model.addAttribute("idVacante", idVacante);
+		return "redirect:/vacantes/index";
 	}
 	
 	@GetMapping("/create")
