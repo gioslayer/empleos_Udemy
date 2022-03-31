@@ -64,5 +64,10 @@ public class CategoriasServiceImpl implements ICategoriasService{
 		}
 		return null;
 	}
+
+	@Override
+	public void eliminar(Integer idCategoria) {
+		// Metodo no usado ya que ahora se usa la implementacion desde Jpa
+	}
 	
 }

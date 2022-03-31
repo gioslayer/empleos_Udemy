@@ -8,6 +8,7 @@ public interface ICategoriasService {
 	void guardar(Categoria categoria);
 	List<Categoria> buscarTodas();
 	Categoria buscarPorId(Integer idCategoria);
+	void eliminar(Integer idCategoria);
 }
 
 
@@ -30,3 +31,8 @@ public interface ICategoriasService {
  * 4.- Agregar un nuevo menú llamado Categorias y configurar la URL al listado de Categorias
  * 
  */
+
+/**Ejercicio 3
+ * Categorias
+ * 1.- Agregar el modulo para editar una categoria
+ * 2.- Agregar el modulo para eliminar una categoria*/
