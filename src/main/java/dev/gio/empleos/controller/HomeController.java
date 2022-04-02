@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import dev.gio.empleos.model.Perfil;
 import dev.gio.empleos.model.Usuario;
 import dev.gio.empleos.model.Vacante;
+import dev.gio.empleos.service.IUsuariosService;
 import dev.gio.empleos.service.IVacantesService;
 
 @Controller
@@ -23,6 +25,9 @@ public class HomeController {
 	
 	@Autowired
 	private IVacantesService serviceVacantes;
+	
+	@Autowired
+	private IUsuariosService serviceUsuarios;
 	
 	@GetMapping("/")
 	public String mostrarHome(Model model) {
@@ -71,6 +76,15 @@ public class HomeController {
 	
 	@PostMapping("/signup")
 	public String guardarRegistro(Usuario usuario, RedirectAttributes attributes) {
+		Perfil perfil = new Perfil();
+		perfil.setId(3);
+
+		usuario.setEstatus(1);
+		usuario.setFechaRegistro(new Date());
+		usuario.agregar(perfil);
+		serviceUsuarios.guardar(usuario);
+		attributes.addFlashAttribute("msg", "El registro fue guardado exitosamente.");
+		
 		return "redirect:/usuarios/index";
 	}
 	
