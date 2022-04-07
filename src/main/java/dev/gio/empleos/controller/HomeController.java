@@ -7,9 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -17,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import dev.gio.empleos.model.Perfil;
 import dev.gio.empleos.model.Usuario;
 import dev.gio.empleos.model.Vacante;
+import dev.gio.empleos.service.ICategoriasService;
 import dev.gio.empleos.service.IUsuariosService;
 import dev.gio.empleos.service.IVacantesService;
 
@@ -28,6 +34,9 @@ public class HomeController {
 	
 	@Autowired
 	private IUsuariosService serviceUsuarios;
+	
+	@Autowired
+	private ICategoriasService serviceCategorias;
 	
 	@GetMapping("/")
 	public String mostrarHome(Model model) {
@@ -88,9 +97,35 @@ public class HomeController {
 		return "redirect:/usuarios/index";
 	}
 	
+	@GetMapping("/search")
+	public String buscar(@ModelAttribute("search") Vacante vacante, Model model) {
+		System.out.println("Buscando por: " + vacante);
+		ExampleMatcher matcher = ExampleMatcher.
+				//where description like '%cadena buscada%'
+				matching().withMatcher("descripcion", ExampleMatcher.GenericPropertyMatchers.contains());
+		
+		Example<Vacante> example = Example.of(vacante, matcher);
+		List<Vacante> lista = serviceVacantes.buscarByExample(example);
+		model.addAttribute("vacantes", lista);
+		return "home";
+	}
+	
+	/**
+	 * InitBinder para Strings si los detecta vacios en el Data Binding los settea a NULL
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	}
+	
 	@ModelAttribute
 	public void setGenericos(Model model) {
+		Vacante vacanteSearch = new Vacante();
+		vacanteSearch.reset();
 		model.addAttribute("vacantes", serviceVacantes.buscarDestacadas());
+		model.addAttribute("categorias", serviceCategorias.buscarTodas());
+		model.addAttribute("search", vacanteSearch);
 	}
 	
 	/**

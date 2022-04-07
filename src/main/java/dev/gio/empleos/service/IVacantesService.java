@@ -2,6 +2,8 @@ package dev.gio.empleos.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Example;
+
 import dev.gio.empleos.model.Vacante;
 
 public interface IVacantesService {
@@ -11,4 +13,5 @@ public interface IVacantesService {
 	void guardar(Vacante vacante);
 	List<Vacante> buscarDestacadas();
 	void eliminar(Integer idVacante);
+	List<Vacante> buscarByExample(Example<Vacante> example);
 }
