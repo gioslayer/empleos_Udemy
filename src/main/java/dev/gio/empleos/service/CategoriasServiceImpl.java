@@ -3,6 +3,8 @@ package dev.gio.empleos.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import dev.gio.empleos.model.Categoria;
@@ -68,6 +70,12 @@ public class CategoriasServiceImpl implements ICategoriasService{
 	@Override
 	public void eliminar(Integer idCategoria) {
 		// Metodo no usado ya que ahora se usa la implementacion desde Jpa
+	}
+
+	@Override
+	public Page<Categoria> buscarTodas(Pageable page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
