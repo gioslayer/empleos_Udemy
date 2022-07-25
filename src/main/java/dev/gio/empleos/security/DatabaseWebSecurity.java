@@ -30,7 +30,7 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 		.antMatchers(
-		//Los recuersos estaticso no requieren autenticación
+		//Los recuersos estaticos no requieren autenticación
 				"/bootstrap/**",
 				"/images/**",
 				"/tinymce/**",

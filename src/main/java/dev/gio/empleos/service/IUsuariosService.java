@@ -9,7 +9,7 @@ public interface IUsuariosService {
 	void guardar(Usuario usuario);
 	void eliminar(Integer idUsuario);
 	List<Usuario> buscarTodos();
-	
+	Usuario buscarPorUsername(String username);
 	/**Ejercicio: Implementar método para registrar un nuevo usuario
 	 * 1.- Usar la plantilla del archivo formRegistro.html
 	 * 2.- El método para mostrar el formulario para registrar y el método para guardar el usuario deberá

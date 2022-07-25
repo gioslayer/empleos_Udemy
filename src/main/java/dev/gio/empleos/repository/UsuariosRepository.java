@@ -6,4 +6,5 @@ import dev.gio.empleos.model.Usuario;
 
 public interface UsuariosRepository extends JpaRepository<Usuario, Integer> {
 
+	Usuario findByUsername(String username);
 }
