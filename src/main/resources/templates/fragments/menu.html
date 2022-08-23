@@ -24,7 +24,7 @@
     </ul>
     <div sec:authorize="isAnonymous()">
     	<a class="btn btn-primary" th:href="@{/index}">Ingresar</a>&nbsp;
-    	<a class="btn btn-primary" th:href="@{/signup}">Registrarse</a>&nbsp;
+    	<a class="btn btn-primary" th:href="@{/signup}">Registrarse</a>&nbsp; 
     </div>
     <div sec:authorize="isAuthenticated()">
     	<span th:if="${session.usuario != null}" class="text-light" th:text="'Bienvenido ' + ${session.usuario.nombre}"></span>&nbsp;

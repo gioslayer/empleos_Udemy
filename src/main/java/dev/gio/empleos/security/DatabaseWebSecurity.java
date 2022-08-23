@@ -3,11 +3,14 @@ package dev.gio.empleos.security;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -40,6 +43,7 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers("/",
 				"/signup",
 				"/search",
+				"/bcrypt/**",
 				"/vacantes/view/**").permitAll()
 		
 		//Asignar permisos a URLs por roles
@@ -53,5 +57,10 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		//El formulario de Login no requiere autenticación
 		.and().formLogin().permitAll();
 		
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }
